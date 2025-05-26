@@ -8,7 +8,7 @@ show_menu() {
     echo "3) Install Marzban (Nasb Marzban)"
     echo "4) Setup SSL Certificates (Tanzim SSL)"
     echo "5) Restart Marzban (Restart Kardan Marzban)"
-    echo "6) Install Template (Nasb Template)"
+    echo "6) Install Template (mrclock) (Nasb Template (mrclock))"
     echo "0) Exit (Khorooj)"
     echo
     read -p "Please enter your choice (Lotfan entekhab konid): " choice
@@ -61,8 +61,10 @@ restart_marzban() {
     marzban restart
 }
 
-install_template() {
-    echo "Installing template... (Dar hal nasb template...)"
+install_template_mrclock() {
+    echo "Installing MrClock template... (Dar hal nasb template MrClock...)"
+
+    
     sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/Mrclocks/MrClock-Subscription-Template/main/index.html
     
     # Update .env file
@@ -71,7 +73,7 @@ install_template() {
     
     # Restart Marzban
     marzban restart
-    echo "Template installed successfully! (Template ba movafaghiat nasb shod!)"
+    echo "MrClock template installed successfully! (Template MrClock ba movafaghiat nasb shod!)"
 }
 
 while true; do
@@ -82,7 +84,7 @@ while true; do
         3) install_marzban ;;
         4) setup_ssl ;;
         5) restart_marzban ;;
-        6) install_template ;;
+        6) install_template_mrclock ;;
         0) echo "Exiting... (Dar hal khorooj...)" ; exit 0 ;;
         *) echo "Invalid choice! (Entekhab eshtebah!)" ;;
     esac
