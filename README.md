@@ -15,29 +15,12 @@
 6. **نصب تمپلیت**: نصب و پیکربندی تمپلیت اختصاصی برای صفحه اشتراک
 
 ## نحوه استفاده
-روش اول - اجرای مرحله به مرحله:
 
 
 ```bash
 wget https://raw.githubusercontent.com/raminol12/automarzban/main/install_marzban.sh && chmod +x install_marzban.sh && ./install_marzban.sh
 ```
 
-روش دوم - اجرای خطی:
-
-1. دانلود اسکریپت:
-```bash
-wget https://raw.githubusercontent.com/raminol12/automarzban/main/install_marzban.sh
-```
-
-2. دادن دسترسی اجرا:
-```bash
-chmod +x install_marzban.sh
-```
-
-3. اجرای اسکریپت:
-```bash
-./install_marzban.sh
-```
 
 4. انتخاب گزینه مورد نظر از منو و دنبال کردن دستورالعمل‌ها
 
