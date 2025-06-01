@@ -35,9 +35,9 @@ install_marzban() {
     read -p "Choose database type (No'e database ra entekhab konid): " db_choice
 
     case $db_choice in
-        1) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh) @ install" ;;
-        2) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh) @ install --database mysql" ;;
-        3) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh) @ install --database mariadb" ;;
+        1) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install ;;
+        2) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database MySQL ;;
+        3) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mariadb ;;
         0) return ;;
         *) echo "Invalid choice! (Entekhab eshtebah!)" ;;
     esac
