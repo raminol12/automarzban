@@ -34,14 +34,20 @@ install_marzban() {
     echo "0) Back to main menu (Bazgasht be menu asli)"
     read -p "Choose database type (No'e database ra entekhab konid): " db_choice
 
+    curl -sL -o marzban.sh https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh
+    chmod +x marzban.sh
+
     case $db_choice in
-        1) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install ;;
-        2) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mysql ;;
-        3) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mariadb ;;
+        1) sudo ./marzban.sh install ;;
+        2) sudo ./marzban.sh install --database mysql ;;
+        3) sudo ./marzban.sh install --database mariadb ;;
         0) return ;;
         *) echo "Invalid choice! (Entekhab eshtebah!)" ;;
     esac
+
+    rm -f marzban.sh
 }
+
 
 setup_ssl() {
     read -p "Enter your domain (Domain khod ra vared konid): " domain
