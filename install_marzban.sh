@@ -35,9 +35,9 @@ install_marzban() {
     read -p "Choose database type (No'e database ra entekhab konid): " db_choice
 
     case $db_choice in
-        1) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install
-        2) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mysql
-        3) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mariadb
+        1) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install ;;
+        2) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mysql ;;
+        3) sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install --database mariadb ;;
         0) return ;;
         *) echo "Invalid choice! (Entekhab eshtebah!)" ;;
     esac
@@ -46,9 +46,9 @@ install_marzban() {
 setup_ssl() {
     read -p "Enter your domain (Domain khod ra vared konid): " domain
     echo "Setting up SSL certificates... (Dar hal tanzim SSL...)"
-    sudo mkdir -p /var/lib/marzban/certs
-    sudo cp "/etc/letsencrypt/live/$domain/fullchain.pem" /var/lib/marzban/certs/fullchain.pem
-    sudo cp "/etc/letsencrypt/live/$domain/privkey.pem" /var/lib/marzban/certs/privkey.pem
+    mkdir -p /var/lib/marzban/certs
+    cp "/etc/letsencrypt/live/$domain/fullchain.pem" /var/lib/marzban/certs/fullchain.pem
+    cp "/etc/letsencrypt/live/$domain/privkey.pem" /var/lib/marzban/certs/privkey.pem
 
     # Update .env file
     sudo sed -i '11s|.*|UVICORN_SSL_CERTFILE = "/var/lib/marzban/certs/fullchain.pem"|' /opt/marzban/.env
@@ -63,13 +63,13 @@ restart_marzban() {
 install_template_mrclock() {
     echo "Installing MrClock template... (Dar hal nasb template MrClock...)"
 
-
+    
     sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/Mrclocks/MrClock-Subscription-Template/main/index.html
-
+    
     # Update .env file
     echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"' | sudo tee -a /opt/marzban/.env
     echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
-
+    
     # Restart Marzban
     marzban restart
     echo "MrClock template installed successfully! (Template MrClock ba movafaghiat nasb shod!)"
@@ -87,5 +87,5 @@ while true; do
         0) echo "Exiting... (Dar hal khorooj...)" ; exit 0 ;;
         *) echo "Invalid choice! (Entekhab eshtebah!)" ;;
     esac
-    read -p "Press Enter to continue... (Baraye edame kelid Enter ra bezanid...)"
+    read -p "Press Enter to continue... (Baraye edame kelid Enter ra bezanid...)" 
 done
